@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>A-Frame 3D Scene with Text</title>
+  <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+</head>
+<body>
+<a-scene background="color: #ECECEC">
+
+  <!-- First Row: Furthest from the Camera -->
+  <a-entity position="-8 2 -27">
+    <a-entity text="value: Position -27; font: roboto; width: 6; color: #333; wrapCount: 10;"></a-entity>
+  </a-entity>
+  <a-entity position="0 2 -21">
+    <a-entity text="value: Position -21; font: roboto; width: 6; color: #333; wrapCount: 10;"></a-entity>
+  </a-entity>
+  <a-entity position="5 2 -15"> <!-- I like this best-->
+    <a-entity text="value: Position -15; font: roboto; width: 6; color: #333; wrapCount: 10;"></a-entity>
+  </a-entity>
+
+  <!-- Second Row: Normal Distance -->
+  <a-entity position="-6 0 -10">
+    <a-entity text="value: Position -10; font: roboto; width: 6; color: #333; wrapCount: 10;"></a-entity>
+  </a-entity>
+  <a-entity position="0 0 -9"> <!-- I like this best-->
+    <a-entity text="value: position -9; font: roboto; width: 6; color: #333; wrapCount: 10;"></a-entity>
+  </a-entity>
+  <a-entity position="5 0 -8">
+    <a-entity text="value: Position -8; font: roboto; width: 6; color: #333; wrapCount: 10;"></a-entity>
+  </a-entity>
+
+  <!-- Third Row: Closest to the Camera -->
+  <a-entity position="-6 -1 -7">
+    <a-entity text="value: Position -7; font: roboto; width: 6; color: #333; wrapCount: 10;"></a-entity>
+  </a-entity>
+  <a-entity position="0 -1 -6"> <!-- I like this best-->
+    <a-entity text="value: Position -6; font: roboto; width: 6; color: #333; wrapCount: 10;"></a-entity>
+  </a-entity>
+  <a-entity position="5 -1 -5">
+    <a-entity text="value: Position -5; font: roboto; width: 6; color: #333; wrapCount: 10;"></a-entity>
+  </a-entity>
+
+  <!-- Camera and Lights -->
+  <a-entity camera position="0 1.6 0" look-controls></a-entity>
+  <a-light type="ambient" color="#888"></a-light>
+  <a-light type="point" intensity="2" position="2 4 -3"></a-light>
+
+</a-scene>
+</body>
+</html>
