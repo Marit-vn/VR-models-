@@ -35,21 +35,21 @@
     </a-entity>
 
     <!-- Camera Rig for Movement and Rotation Controls -->
-    <a-entity id="cameraRig" position="0 1.6 0" movement-controls>
+    <a-entity id="cameraRig" position="0 1.6 0" rotation-controls look-controls>
         <a-entity camera look-controls="pointerLockEnabled: true">
             <a-cursor></a-cursor>
         </a-entity>
     </a-entity>
 
-    <!-- Right Hand Controller for Movement -->
+    <!-- Right Hand Controller for Additional Rotation -->
     <a-entity id="rightHand" oculus-touch-controls="hand: right" vive-controls="hand: right" 
               windows-motion-controls="hand: right" generic-tracked-controller-controls="hand: right"
-              wasd-controls="enabled: true"></a-entity>
+              rotation-controls="camera: #cameraRig"></a-entity>
 
-    <!-- Left Hand Controller for Camera Rotation -->
+    <!-- Left Hand Controller for Movement -->
     <a-entity id="leftHand" oculus-touch-controls="hand: left" vive-controls="hand: left" 
               windows-motion-controls="hand: left" generic-tracked-controller-controls="hand: left"
-              rotation-controls="camera: #cameraRig"></a-entity>
+              wasd-controls="enabled: true"></a-entity>
 
     <!-- Ground to enable teleportation -->
     <a-plane position="0 0 -4" rotation="-90 0 0" width="20" height="20" color="#7BC8A4" class="clickable"></a-plane>
