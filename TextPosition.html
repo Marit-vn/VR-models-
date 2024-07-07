@@ -5,6 +5,7 @@
     <title>A-Frame Scene with VR Controller Support</title>
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-extras@6.1.1/dist/aframe-extras.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/chenzlabs/aframe-look-controls@0.8.2/aframe-look-controls-component.js"></script>
 </head>
 <body>
 <a-scene vr-mode-ui="enabled: true">
@@ -36,20 +37,20 @@
 
     <!-- Camera Rig for Movement and Rotation Controls -->
     <a-entity id="cameraRig" position="0 1.6 0">
-        <a-entity camera look-controls>
+        <a-entity camera look-controls="pointerLockEnabled: true; touchEnabled: false">
             <a-cursor></a-cursor>
         </a-entity>
     </a-entity>
 
-    <!-- Right Hand Controller for Movement -->
-   <a-entity id="rightHand" oculus-touch-controls="hand: right" vive-controls="hand: right" windows-motion-controls="hand: right" 
+    <!-- Right Hand Controller for Camera Rotation -->
+    <a-entity id="rightHand" oculus-touch-controls="hand: right" vive-controls="hand: right" windows-motion-controls="hand: right" 
               generic-tracked-controller-controls="hand: right" 
-              joystick-controls="cameraRig: #cameraRig"></a-entity>
+              rotation-controls="camera: #cameraRig; target: #cameraRig; enabled: true;"></a-entity>
 
-    <!-- Left Hand Controller for Camera Rotation -->
-     <a-entity id="leftHand" oculus-touch-controls="hand: left" vive-controls="hand: left" windows-motion-controls="hand: left" 
-              generic-tracked-controller-controls="hand: left" 
-              look-controls="enabled: true; touchEnabled: true;"></a-entity>
+    <!-- Left Hand Controller for Movement -->
+    <a-entity id="leftHand" oculus-touch-controls="hand: left" vive-controls="hand: left" windows-motion-controls="hand: left" 
+              generic-tracked-controller-controls="hand: left"
+              joystick-controls="cameraRig: #cameraRig"></a-entity>
 
     <!-- Ground to enable teleportation -->
     <a-plane position="0 0 -4" rotation="-90 0 0" width="20" height="20" color="#7BC8A4" class="clickable"></a-plane>
