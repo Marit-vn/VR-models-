@@ -42,15 +42,14 @@
     </a-entity>
 
     <!-- Right Hand Controller for Movement -->
-     <a-entity id="rightHand" oculus-touch-controls="hand: right" vive-controls="hand: right" windows-motion-controls="hand: right" 
+   <a-entity id="rightHand" oculus-touch-controls="hand: right" vive-controls="hand: right" windows-motion-controls="hand: right" 
               generic-tracked-controller-controls="hand: right" 
-              look-controls="enabled: true; touchEnabled: true;"></a-entity>
+              joystick-controls="cameraRig: #cameraRig"></a-entity>
 
     <!-- Left Hand Controller for Camera Rotation -->
-    <a-entity id="leftHand" oculus-touch-controls="hand: left" vive-controls="hand: left" windows-motion-controls="hand: left" 
-              generic-tracked-controller-controls="hand: left">
-        <a-entity rotation-controls="camera: #cameraRig"></a-entity>
-    </a-entity>
+     <a-entity id="leftHand" oculus-touch-controls="hand: left" vive-controls="hand: left" windows-motion-controls="hand: left" 
+              generic-tracked-controller-controls="hand: left" 
+              look-controls="enabled: true; touchEnabled: true;"></a-entity>
 
     <!-- Ground to enable teleportation -->
     <a-plane position="0 0 -4" rotation="-90 0 0" width="20" height="20" color="#7BC8A4" class="clickable"></a-plane>
