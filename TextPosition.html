@@ -48,26 +48,5 @@
     <!-- Ground to enable teleportation -->
     <a-plane position="0 0 -4" rotation="-90 0 0" width="20" height="20" color="#7BC8A4" class="clickable"></a-plane>
 </a-scene>
-
-<script>
-AFRAME.registerComponent('rotation-controls', {
-  schema: {
-    target: {type: 'selector'},
-    sensitivity: {type: 'number', default: 0.1}
-  },
-
-  init: function () {
-    this.el.addEventListener('axismove', this.onAxisMove.bind(this));
-  },
-
-  onAxisMove: function (evt) {
-    var axis = evt.detail.axis;
-    var deltaX = axis[0] * this.data.sensitivity;
-    var deltaY = axis[1] * this.data.sensitivity;
-    this.data.target.object3D.rotation.y -= deltaX;
-    this.data.target.object3D.rotation.x -= deltaY;
-  }
-});
-</script>
 </body>
 </html>
