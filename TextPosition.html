@@ -34,18 +34,19 @@
         <a-cone color="#228B22" radius-bottom="1" height="2" position="0 2 0"></a-cone>
     </a-entity>
 
-    <!-- Camera -->
-    <a-entity camera position="0 1.6 0">
-        <a-cursor></a-cursor>
+    <!-- Camera with movement controls -->
+    <a-entity id="cameraRig" position="0 1.6 0" movement-controls>
+        <a-entity camera look-controls>
+            <a-cursor></a-cursor>
+        </a-entity>
     </a-entity>
 
-    <!-- VR Controller -->
-    <a-entity id="leftHand" hand-controls="hand: left; handModelStyle: lowPoly; color: #ffcccc"></a-entity>
-    <a-entity id="rightHand" hand-controls="hand: right; handModelStyle: lowPoly; color: #ffcccc"></a-entity>
+    <!-- VR Controller for movement -->
+    <a-entity id="leftHand" oculus-touch-controls="hand: left" vive-controls="hand: left" windows-motion-controls="hand: left" generic-tracked-controller-controls="hand: left" raycaster="objects: .clickable" line="color: yellow; opacity: 0.75"></a-entity>
+    <a-entity id="rightHand" oculus-touch-controls="hand: right" vive-controls="hand: right" windows-motion-controls="hand: right" generic-tracked-controller-controls="hand: right" raycaster="objects: .clickable" line="color: yellow; opacity: 0.75"></a-entity>
 
     <!-- Ground to enable teleportation -->
     <a-plane position="0 0 -4" rotation="-90 0 0" width="20" height="20" color="#7BC8A4" class="clickable"></a-plane>
 </a-scene>
 </body>
 </html>
-
