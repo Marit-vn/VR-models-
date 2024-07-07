@@ -41,34 +41,47 @@
         </a-entity>
     </a-entity>
 
-    <!-- Right Hand Controller for Camera Rotation -->
-    <a-entity id="rightHand" oculus-touch-controls="hand: right" vive-controls="hand: right" 
+    <!-- Right Hand Controller for Movement -->
+   <a-entity id="rightHand" oculus-touch-controls="hand: right" vive-controls="hand: right" 
               windows-motion-controls="hand: right" generic-tracked-controller-controls="hand: right"
               rotation-controls-right-hand></a-entity>
 
-    <!-- Left Hand Controller for Movement (disabled for rotation) -->
+    <!-- Left Hand Controller for Camera Rotation -->
     <a-entity id="leftHand" oculus-touch-controls="hand: left" vive-controls="hand: left" 
               windows-motion-controls="hand: left" generic-tracked-controller-controls="hand: left"
-              wasd-controls="enabled: false"></a-entity>
+              rotation-controls="camera: #cameraRig"></a-entity>
 
     <!-- Ground to enable teleportation -->
     <a-plane position="0 0 -4" rotation="-90 0 0" width="20" height="20" color="#7BC8A4" class="clickable"></a-plane>
 
     <script>
-        AFRAME.registerComponent('rotation-controls-right-hand', {
+        AFRAME.registerComponent('rotation-controls', {
+            schema: {
+                camera: { type: 'selector' },
+            },
             init: function () {
                 this.yaw = 0;
+                this.pitch = 0;
+                this.camera = this.data.camera;
                 this.el.addEventListener('axismove', this.onAxisMove.bind(this));
             },
             onAxisMove: function (evt) {
-                // Use the first axis (thumbstick or touchpad x)
-                if (evt.detail.axis.length < 1) return;
+                // Only use the first two axes (thumbstick or touchpad x and y)
+                if (evt.detail.axis.length < 2) return;
 
                 // Adjust sensitivity as needed
                 this.yaw -= evt.detail.axis[0] * 2;
+                this.pitch -= evt.detail.axis[1] * 2;
+
+                // Limit pitch to avoid flipping over
+                this.pitch = Math.min(Math.max(this.pitch, -89), 89);
 
                 // Apply rotation to the camera
-                this.el.object3D.rotation.y = THREE.Math.degToRad(this.yaw);
+                this.camera.object3D.rotation.set(
+                    THREE.Math.degToRad(this.pitch),
+                    THREE.Math.degToRad(this.yaw),
+                    0
+                );
             }
         });
     </script>
